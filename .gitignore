@@ -179,3 +179,10 @@ tags
 !.aiderignore
 .env
 schema.json
+for-agent/readme.md
+for-agent/base-for-both-mods/Configuration_adv.h
+for-agent/base-for-both-mods/Configuration.h
+for-agent/elegoo-neptune-2s/Configuration_adv.h
+for-agent/elegoo-neptune-2s/Configuration.h
+for-agent/mks-robin-nano-v31/Configuration_adv.h
+for-agent/mks-robin-nano-v31/Configuration.h
