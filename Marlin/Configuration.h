@@ -715,7 +715,7 @@
   //#define MIN_POWER 0           // Min power to improve PID stability (0..PID_MAX).
                                   // Get the power from the temperature report ('M105' => @:nnn) and try P*2-20 to P*2-10.
   //#define PID_DEBUG             // Print PID debug data to the serial port. Use 'M303 D' to enable/disable.
-  //#define PID_PARAMS_PER_HOTEND // Use separate PID parameters for each extruder (useful for mismatched extruders)
+  #define PID_PARAMS_PER_HOTEND // Use separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with G-code: M301 E[extruder number, 0-2]
 
   #if ENABLED(PID_PARAMS_PER_HOTEND)
