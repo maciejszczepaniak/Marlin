@@ -140,6 +140,10 @@ void prepare_for_probe_offset_wizard() {
 
   motion.set_soft_endstop_loose(true); // Disable soft endstops for free Z movement
 
+  // Lower nozzle to the probe trigger height (z_offset_ref ≈ 0mm) so the paper test
+  // starts at bed level instead of at the stow clearance height.
+  motion.do_z_clearance(z_offset_ref, false, true);
+
   // Go to Calibration Menu, then immediately open fine move.
   // Wizard menu is pushed into history so clicking out of fine move returns to Done/Cancel.
   // Pre-select "Done" so a wheel click immediately confirms without scrolling.
