@@ -43,6 +43,11 @@ void _goto_manual_move_z(const float);
 
 // Global storage - TODO: Keep wizard/process data in a 'ui.scratch' union.
 float z_offset_backup, calculated_z_offset, z_offset_ref;
+static bool probe_offset_auto_fine_move;
+
+constexpr float wizard_fine_move_scale() {
+  return ((FINE_MANUAL_MOVE) > 0.0f && (FINE_MANUAL_MOVE) < 0.1f) ? float(FINE_MANUAL_MOVE) : 0.1f;
+}
 
 // "Done" - Set the offset, re-enable leveling, go back to the previous screen.
 void set_offset_and_go_back(const float z) {
@@ -57,6 +62,12 @@ void set_offset_and_go_back(const float z) {
  * @brief Display a menu to Move Z, Cancel, or signal Done
  */
 void probe_offset_wizard_menu() {
+  if (probe_offset_auto_fine_move) {
+    probe_offset_auto_fine_move = false;
+    _goto_manual_move_z(wizard_fine_move_scale());
+    return;
+  }
+
   START_MENU();
   calculated_z_offset = probe.offset.z + motion.position.z - z_offset_ref;
 
@@ -137,6 +148,7 @@ void prepare_for_probe_offset_wizard() {
   motion.set_soft_endstop_loose(true); // Disable soft endstops for free Z movement
 
   // Go to Calibration Menu
+  probe_offset_auto_fine_move = true;
   ui.goto_screen(probe_offset_wizard_menu);
   ui.defer_status_screen();
 }

@@ -44,6 +44,11 @@
 void _goto_manual_move_z(const float);
 
 float measured_z, z_offset;
+static bool xatc_auto_fine_move;
+
+constexpr float wizard_fine_move_scale() {
+  return ((FINE_MANUAL_MOVE) > 0.0f && (FINE_MANUAL_MOVE) < 0.1f) ? float(FINE_MANUAL_MOVE) : 0.1f;
+}
 
 //
 // Step 9: X Axis Twist Compensation Wizard is finished.
@@ -92,6 +97,12 @@ void xatc_wizard_set_offset_and_go_to_next_point() {
 // Step 6: Wizard Menu. Move the nozzle down until it touches the bed.
 //
 void xatc_wizard_menu() {
+  if (xatc_auto_fine_move) {
+    xatc_auto_fine_move = false;
+    _goto_manual_move_z(wizard_fine_move_scale());
+    return;
+  }
+
   START_MENU();
   float calculated_z_offset = probe.offset.z + motion.position.z - measured_z;
 
@@ -136,6 +147,7 @@ void xatc_wizard_goto_next_point() {
     // Avoid probing outside the round or hexagonal area
     if (!TERN0(IS_KINEMATIC, !probe.can_reach(x, XATC_Y_POSITION))) {
       ui.wait_for_move = true;
+      xatc_auto_fine_move = true;
       ui.goto_screen(xatc_wizard_moving);
 
       // Deploy certain probes before starting probing
