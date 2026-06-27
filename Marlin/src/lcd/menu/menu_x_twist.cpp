@@ -99,6 +99,7 @@ void xatc_wizard_set_offset_and_go_to_next_point() {
 void xatc_wizard_menu() {
   if (xatc_auto_fine_move) {
     xatc_auto_fine_move = false;
+    ui.push_current_screen();
     _goto_manual_move_z(wizard_fine_move_scale());
     return;
   }

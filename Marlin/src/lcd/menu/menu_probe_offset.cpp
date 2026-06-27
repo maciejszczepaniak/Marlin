@@ -64,6 +64,7 @@ void set_offset_and_go_back(const float z) {
 void probe_offset_wizard_menu() {
   if (probe_offset_auto_fine_move) {
     probe_offset_auto_fine_move = false;
+    ui.push_current_screen();
     _goto_manual_move_z(wizard_fine_move_scale());
     return;
   }
