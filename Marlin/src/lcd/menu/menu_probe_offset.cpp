@@ -142,7 +142,11 @@ void prepare_for_probe_offset_wizard() {
 
   // Lower nozzle to the probe trigger height (z_offset_ref ≈ 0mm) so the paper test
   // starts at bed level instead of at the stow clearance height.
+  // ui.wait_for_move=true prevents this screen function from being re-invoked
+  // via idle()→ui.update() during the blocking Z move, which would restart the probe cycle.
+  ui.wait_for_move = true;
   motion.do_z_clearance(z_offset_ref, false, true);
+  ui.wait_for_move = false;
 
   // Go to Calibration Menu, then immediately open fine move.
   // Wizard menu is pushed into history so clicking out of fine move returns to Done/Cancel.
