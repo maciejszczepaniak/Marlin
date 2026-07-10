@@ -620,9 +620,9 @@
 #endif
 
 #if HAS_E_TEMP_SENSOR
-  #define TEMP_RESIDENCY_TIME         10  // (seconds) Time to wait for hotend to "settle" in M109
+  #define TEMP_RESIDENCY_TIME         2  // (seconds) Time to wait for hotend to "settle" in M109
   #define TEMP_WINDOW                  2  // (°C) Temperature proximity for the "temperature reached" timer
-  #define TEMP_HYSTERESIS              6  // (°C) Temperature proximity considered "close enough" to the target
+  #define TEMP_HYSTERESIS              4  // (°C) Temperature proximity considered "close enough" to the target
 #endif
 
 #if TEMP_SENSOR_BED
