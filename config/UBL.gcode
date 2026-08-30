@@ -34,3 +34,5 @@ M421 I4 J4 Z0.1845
 G29 S0 ; Zapisuje bieżącą siatkę z RAM do slotu 0
 G29 A  ; Włącza system UBL (odpowiednik M420 S1)
 M500   ; Zapisuje konfigurację i aktywny slot w EEPROM
+
+G29 T  ; Print mesh to console 
