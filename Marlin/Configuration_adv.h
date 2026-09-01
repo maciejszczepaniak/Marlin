@@ -3499,7 +3499,7 @@
     #define STEALTHCHOP_U
     #define STEALTHCHOP_V
     #define STEALTHCHOP_W
-    #define STEALTHCHOP_E
+    // #define STEALTHCHOP_E
   #endif
 
   /**
@@ -3573,10 +3573,10 @@
    */
   #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     100  // [mm/s]
-  #define X2_HYBRID_THRESHOLD    100
-  #define Y_HYBRID_THRESHOLD     100
-  #define Y2_HYBRID_THRESHOLD    100
+  #define X_HYBRID_THRESHOLD      60  // [mm/s]
+  #define X2_HYBRID_THRESHOLD     60
+  #define Y_HYBRID_THRESHOLD      40
+  #define Y2_HYBRID_THRESHOLD     40
   #define Z_HYBRID_THRESHOLD       3
   #define Z2_HYBRID_THRESHOLD      3
   #define Z3_HYBRID_THRESHOLD      3
@@ -3587,14 +3587,14 @@
   #define U_HYBRID_THRESHOLD       3  // [mm/s]
   #define V_HYBRID_THRESHOLD       3
   #define W_HYBRID_THRESHOLD       3
-  #define E0_HYBRID_THRESHOLD     30
-  #define E1_HYBRID_THRESHOLD     30
-  #define E2_HYBRID_THRESHOLD     30
-  #define E3_HYBRID_THRESHOLD     30
-  #define E4_HYBRID_THRESHOLD     30
-  #define E5_HYBRID_THRESHOLD     30
-  #define E6_HYBRID_THRESHOLD     30
-  #define E7_HYBRID_THRESHOLD     30
+  #define E0_HYBRID_THRESHOLD      0
+  #define E1_HYBRID_THRESHOLD      0
+  #define E2_HYBRID_THRESHOLD      0
+  #define E3_HYBRID_THRESHOLD      0
+  #define E4_HYBRID_THRESHOLD      0
+  #define E5_HYBRID_THRESHOLD      0
+  #define E6_HYBRID_THRESHOLD      0
+  #define E7_HYBRID_THRESHOLD      0
 
   /**
    * Use StallGuard to home / probe X, Y, Z.
